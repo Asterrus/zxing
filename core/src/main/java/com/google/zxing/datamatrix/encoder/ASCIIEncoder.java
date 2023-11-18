@@ -59,7 +59,7 @@ final class ASCIIEncoder implements Encoder {
           default:
             throw new IllegalStateException("Illegal mode: " + newMode);
         }
-      } else if (HighLevelEncoder.isExtendedASCII(c)) {
+      } else if ((HighLevelEncoder.isExtendedASCII(c)) && (!(context.pos == 0 && c == 'ç'))){
         context.writeCodeword(HighLevelEncoder.UPPER_SHIFT);
         context.writeCodeword((char) (c - 128 + 1));
         context.pos++;
